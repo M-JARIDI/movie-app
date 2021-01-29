@@ -1,13 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
 import "./assets/main.css";
-import Movies from "./Movies";
+import MovieApp from "./MovieApp";
 
 function App() {
   return (
     <div className="App">
-      <Movies />
+      <MovieApp />
     </div>
   );
 }
