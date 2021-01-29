@@ -1,19 +1,13 @@
 import React from "react";
 import MoviesList from "./MoviesList";
-// import PropTypes from "prop-types";
 
 
 const Body = ({movies}) => {
   return (
-    <div className="w-1/2 sm:auto md:auto lg:auto shadow-2xl h-50 mx-auto flex flex-col items-center">
-        <span className="text-4xl font-light text-white  ">movies list</span>
-        <MoviesList movies= {movies}/>
+    <div className=" sm:auto md:auto lg:auto mx-auto shadow-2xl h-50  flex flex-col items-center">
+        <MoviesList movies= {movies} className="h-50"/>
     </div>
   );
 };
 
 export default Body;
-
-// MoviesList.propTypes = {
-//     movies: PropTypes.arrayOf(PropTypes.object),
-//   };

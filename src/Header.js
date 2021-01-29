@@ -1,8 +1,6 @@
 import React from "react";
 import { useEffect, useReducer } from "react";
 import axios from "axios";
-import PropTypes from "prop-types";
-
 
 const initialState = {
   typedInMovieTitle: "",
@@ -10,7 +8,6 @@ const initialState = {
   movies: [],
   isLoading: false,
   isError: false,
-  selectedMovie: null,
 };
 
 const ACTION = {
@@ -108,7 +105,7 @@ function Header({setMovies})
   },[state.movies]);
   
   return (
-      <div className="w-1/2 sm:auto md:auto lg:auto shadow-2xl mx-auto flex flex-col items-center">
+      <div className=" sm:auto md:auto lg:auto shadow-2xl mx-auto flex flex-col items-center">
         <div className="py-4">
           <span className="text-4xl font-light text-white  ">Movies Searcher</span>
         </div>
