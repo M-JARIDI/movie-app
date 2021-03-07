@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useReducer } from "react";
 import axios from "axios";
+import style from "./assets/style.module.css";
 
 const initialState = {
   typedInMovieTitle: "",
@@ -64,39 +65,32 @@ function Header({setMovies})
   const [state, dispatch] = useReducer(reducer, initialState);
 
   function onChange(event) {
-    const action={
+    dispatch({
       type: ACTION.TYPE_SEARCH,
       value: event.target.value,
-    };
-    dispatch(action);
+    });
   }
 
   function onSubmit(event) {
     event.preventDefault();
-    const action = {
-      type: ACTION.SUBMIT_SEARCH,
-    };
-    dispatch(action);
+    dispatch({type: ACTION.SUBMIT_SEARCH});
   }
 
-  useEffect(() => {
-    if (state.submittedMovieTitle) {
-      const fetchData = async () => {
-        dispatch({ type: "FETCH_DATA" });
-        try {
-          const result = await axios(
-            `http://api.tvmaze.com/search/shows?q=${state.submittedMovieTitle}`
-          );
-          dispatch({
-            type: ACTION.FETCH_DATA_SUCCESS,
-            value: result.data,
-          });
-        } catch (error) {
-          dispatch({ type: "FETCH_DATA_FAIL" });
-        }
-      };
-      fetchData();
+  const fetchData = async () => {
+    dispatch({ type: "FETCH_DATA" });
+    try {
+      const result = await axios(`https://api.tvmaze.com/search/shows?q=${state.submittedMovieTitle}`);
+      dispatch({
+        type: ACTION.FETCH_DATA_SUCCESS,
+        value: result.data,
+      });
+    } catch (error) {
+      dispatch({ type: "FETCH_DATA_FAIL" });
     }
+  };
+
+  useEffect(() => {
+    state.submittedMovieTitle && fetchData();
   }, [state.submittedMovieTitle]
   );
 
@@ -105,23 +99,27 @@ function Header({setMovies})
   },[state.movies]);
   
   return (
-      <div className=" sm:auto md:auto lg:auto shadow-2xl mx-auto flex flex-col items-center">
-        <div className="py-4">
-          <span className="text-4xl font-light text-white  ">Movies Searcher</span>
+      <div>
+        <div className={style.navbarContainer}>
+          <a href="#">links</a>
+          <a href="#">about us</a>
         </div>
-        <form onSubmit={onSubmit}>
-          <input
-            type="text"
-            placeholder="Search"
-            className=" rounded shadow-2xl outline-none py-2 px-2"
-            onChange={onChange}
-          />
-          <input
-            type="submit"
-            value="Search"
-            className=" rounded shadow-2xl outline-none py-2 px-2 mb-4 ml-2"
-          />
-        </form>
+        <div className={style.searchContainer}>
+          <div>
+            <span>Here you can find movies and series</span>
+          </div>
+          <form onSubmit={onSubmit}>
+            <input
+              type="text"
+              placeholder="Search"
+              onChange={onChange}
+            />
+            <input
+              type="submit"
+              value="Search"
+            />
+          </form>
+        </div>
       </div>
   );
 }

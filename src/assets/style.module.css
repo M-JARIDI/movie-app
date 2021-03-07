@@ -1,0 +1,59 @@
+.navbarContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    /* border: 2px solid black; */
+    height: 2rem;
+    margin-top: 2%;
+}
+
+.searchContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* border: 2px solid red; */
+    margin-top: 2%;
+}
+
+.MoviesContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    /* border: 2px solid green; */
+    margin-top: 2%;
+}
+
+.movieContainer {
+    align-items: center;
+    height: 23rem;
+    width: 14rem;
+    margin:0.7rem;
+    padding: 0.3rem;
+    /* border: 2px solid blue; */
+}
+
+.imageContainer {
+    /* border: 4px solid yellow; */
+    height: 85%;
+    width: 100%;
+}
+
+div img {
+    width: 100%;
+    height: 100%;
+}
+
+a {
+    padding: 1%;
+}
+
+footer {
+    /* border: 2px solid yellow; */
+    text-align: center;
+    height: 2rem;
+    margin-top: 2%;
+}

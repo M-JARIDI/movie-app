@@ -1,26 +1,33 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
+import style from "./assets/style.module.css";
+
 
 function MovieItem({ movie, setSelectedMovie }) {
 
   const onClick = () => {
     setSelectedMovie(movie);
   }
-
 return (
-    <div className="max-w-sm  overflow-hidden  mt-3 mb-6 rounded-lg shadow-2xl">
+    <div className={style.movieContainer} >
         {movie.show.image && movie.show.image.medium ?
         (
-          <img
-              src={`${movie.show.image.medium}`}
-              alt="404"
-              className="  w-full object-cover "
-          />
+          <div className={style.imageContainer}>
+            <img
+              src={movie.show.image.medium}
+              alt={movie.show.name}
+            />
+          </div>
         ) :
         (
-        <p className="text-4xl font-light text-white">{movie.show.name}</p>
+          <div className={style.imageContainer}>
+            <img
+                src="#"
+                alt={movie.show.name}
+            />
+          </div>
         )}
-      <Button variant="contained"onClick={onClick}>show more</Button>
+      <Button variant="contained" onClick={onClick}>show details</Button>
     </div>  
 );
 }  

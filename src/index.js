@@ -1,14 +1,18 @@
-import React from "react";
+import React, {useState} from "react";
 import ReactDOM from "react-dom";
-import "./assets/main.css";
-import MovieApp from "./MovieApp";
+import Header from "./Header";
+import Body from "./Body";
+import Footer from "./Footer";
 
 function App() {
-  return (
-    <div className="App">
-      <MovieApp />
-    </div>
-  );
+  const [movies, setMovies] = useState(null);
+    return(   
+        <div>
+            <Header setMovies={setMovies} />
+            <Body movies={movies}/>
+            <Footer />
+        </div>
+    )
 }
 
 const rootElement = document.getElementById("root");
