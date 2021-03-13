@@ -1,11 +1,10 @@
-import React from "react";
-import { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import axios from "axios";
+import TextField from '@material-ui/core/TextField';
 import style from "./assets/style.module.css";
 
 const initialState = {
   typedInMovieTitle: "",
-  submittedMovieTitle: "",
   movies: [],
   isLoading: false,
   isError: false,
@@ -13,11 +12,10 @@ const initialState = {
 
 const ACTION = {
   TYPE_SEARCH: "TYPE_SEARCH",
-  SUBMIT_SEARCH: "SUBMIT_SEARCH",
   FETCH_DATA: "FETCH_DATA",
   FETCH_DATA_SUCCESS: "FETCH_DATA_SUCCESS",
   FETCH_DATA_FAIL: "FETCH_DATA_FAIL",
-  SELECT_MOVIE: "SELECT_MOVIE",
+  // SELECT_MOVIE: "SELECT_MOVIE",
 };
 
 const reducer = (state, action) => {
@@ -27,12 +25,6 @@ const reducer = (state, action) => {
         ...state,
         typedInMovieTitle: action.value,
       };
-      case ACTION.SUBMIT_SEARCH:
-        return {
-          ...state,
-          submittedMovieTitle: state.typedInMovieTitle,
-        };
-  
       case ACTION.FETCH_DATA:
         return {
           ...state,
@@ -60,7 +52,7 @@ const reducer = (state, action) => {
   }
 };
 
-function Header({setMovies}) 
+function Header({setMoviesOfAppComponent}) 
 {
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -71,54 +63,44 @@ function Header({setMovies})
     });
   }
 
-  function onSubmit(event) {
-    event.preventDefault();
-    dispatch({type: ACTION.SUBMIT_SEARCH});
-  }
-
-  const fetchData = async () => {
-    dispatch({ type: "FETCH_DATA" });
-    try {
-      const result = await axios(`https://api.tvmaze.com/search/shows?q=${state.submittedMovieTitle}`);
-      dispatch({
-        type: ACTION.FETCH_DATA_SUCCESS,
-        value: result.data,
-      });
-    } catch (error) {
-      dispatch({ type: "FETCH_DATA_FAIL" });
-    }
-  };
-
   useEffect(() => {
-    state.submittedMovieTitle && fetchData();
-  }, [state.submittedMovieTitle]
-  );
+    if(state.typedInMovieTitle) 
+    {
+      const fetchData = async () => {
+        dispatch({ type: "FETCH_DATA" });
+        try {
+          const result = await axios(`https://api.tvmaze.com/search/shows?q=${state.typedInMovieTitle}`);
+          dispatch({
+            type: ACTION.FETCH_DATA_SUCCESS,
+            value: result.data,
+          });
+        } catch (error) {
+          dispatch({ type: "FETCH_DATA_FAIL" });
+        }
+      };
+      fetchData();
+    }
+    }, [state.typedInMovieTitle]);
 
   useEffect(()=> {
-    setMovies(state.movies);
+    setMoviesOfAppComponent(state.movies);
   },[state.movies]);
   
   return (
       <div>
-        <div className={style.navbarContainer}>
+        {/* <div className={style.navbarContainer}>
           <a href="#">links</a>
           <a href="#">about us</a>
-        </div>
+        </div> */}
         <div className={style.searchContainer}>
-          <div>
-            <span>Here you can find movies and series</span>
-          </div>
-          <form onSubmit={onSubmit}>
-            <input
-              type="text"
-              placeholder="Search"
+            <h3><b>Here you can find movies and series</b></h3>
+            <TextField 
+              id="outlined-basic" 
+              label="Search" 
+              variant="outlined"
               onChange={onChange}
+              size="small"
             />
-            <input
-              type="submit"
-              value="Search"
-            />
-          </form>
         </div>
       </div>
   );

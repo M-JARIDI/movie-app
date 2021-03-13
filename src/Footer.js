@@ -2,8 +2,8 @@ import React from "react";
 
 const Footer = () => {
   return (
-      <footer >
-        <span>Movies searcher app</span>
+      <footer>
+        <a href="https://www.google.com">bamu.com</a>
       </footer>
  
   );
