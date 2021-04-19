@@ -15,7 +15,6 @@ const ACTION = {
   FETCH_DATA: "FETCH_DATA",
   FETCH_DATA_SUCCESS: "FETCH_DATA_SUCCESS",
   FETCH_DATA_FAIL: "FETCH_DATA_FAIL",
-  // SELECT_MOVIE: "SELECT_MOVIE",
 };
 
 const reducer = (state, action) => {
@@ -52,7 +51,7 @@ const reducer = (state, action) => {
   }
 };
 
-function Header({setMoviesOfAppComponent}) 
+export default function Header({setMoviesOfAppComponent}) 
 {
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -84,14 +83,9 @@ function Header({setMoviesOfAppComponent})
 
   useEffect(()=> {
     setMoviesOfAppComponent(state.movies);
-  },[state.movies]);
+  },[state.movies,setMoviesOfAppComponent]);
   
   return (
-      <div>
-        {/* <div className={style.navbarContainer}>
-          <a href="#">links</a>
-          <a href="#">about us</a>
-        </div> */}
         <div className={style.searchContainer}>
             <h3><b>Here you can find movies and series</b></h3>
             <TextField 
@@ -102,8 +96,5 @@ function Header({setMoviesOfAppComponent})
               size="small"
             />
         </div>
-      </div>
   );
 }
-
-export default Header;
