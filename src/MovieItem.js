@@ -2,7 +2,7 @@ import React from "react";
 import style from "./assets/style.module.css";
 
 
-function MovieItem({ movie }) {
+export default function MovieItem({ movie }) {
 
     return (
         <div className={style.imageContainer}>
@@ -30,5 +30,3 @@ function MovieItem({ movie }) {
         </div>
     );
 }
-
-export default MovieItem;
