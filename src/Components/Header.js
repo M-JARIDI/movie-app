@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import style from "../assets/style.module.css";
 import AppBar from "@material-ui/core/AppBar";
-import ToolBar from "@material-ui/core/ToolBar";
+import ToolBar from "@material-ui/core/Toolbar";
 import { makeStyles } from "@material-ui/core/styles";
 import { RiMovie2Line } from "react-icons/ri";
 
