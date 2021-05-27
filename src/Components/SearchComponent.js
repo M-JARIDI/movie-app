@@ -26,7 +26,7 @@ export default function SearchComponent({ setMovies }) {
     if (typedInMovieTitle) {
       fetchData(typedInMovieTitle, setMovies);
     }
-  }, [typedInMovieTitle]);
+  }, [typedInMovieTitle, setMovies]);
 
   return (
     <div className={classes.searchInputLight}>

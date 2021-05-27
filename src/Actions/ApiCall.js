@@ -1,4 +1,3 @@
-import React from "react";
 import axios from "axios";
 
 //chercher les films saisis dans la bare de recherche
