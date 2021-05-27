@@ -5,12 +5,13 @@ import style from "./assets/style.module.css";
 
 export default function MoviesList ({ movies, setSelectedMovie }){
 
+    const buttonStyle = {marginTop: "15px"}
     return(
         <>
         {movies.map((movie, index) => (
             <div key={index} className={style.movieCard} >
               <MovieItem movie={movie} />
-              <Button onClick={() => { setSelectedMovie(movie) }} variant="contained" style={{ marginTop: "15px" }}><b>show details</b></Button>
+              <Button onClick={() => { setSelectedMovie(movie) }} variant="contained" style={buttonStyle}><b>show details</b></Button>
             </div>))}
         </>
     )

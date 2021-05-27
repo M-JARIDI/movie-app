@@ -9,6 +9,7 @@ import style from "./assets/style.module.css";
 import Pagination from "react-js-pagination";
 import "bootstrap/dist/css/bootstrap.css";
 
+const flexStyle = { display: "flex", justifyContent: "center" }
 export default function Body({ movies }) {
 
   const [selectedMovie, setSelectedMovie] = useState(null);
@@ -36,53 +37,44 @@ export default function Body({ movies }) {
 
   return (
     <Fragment>
-      <div style={{ display: "flex", justifyContent: "center", paddingBottom: "30px" }}>
-        {selectedMovie ?
+      <div style={flexStyle}>
+        {allShows ?
           (
-            <div className={style.movieDetailsContainer}>
-              <div className={style.movieCard}>
-                <MovieItem movie={selectedMovie} />
-                <Button onClick={() => { setSelectedMovie(null) }} variant="contained" style={{ marginTop: "15px" }}><b>back</b></Button>
-              </div>
-              <MovieDetails movie={selectedMovie} />
+            <div className={style.MoviesContainer}>
+              {allShows.data.slice(bounds[0], bounds[1]).map((movie, index) => (
+                <div key={index} className={style.movieCard} >
+                  <MovieItem movie={movie} />
+                  <Button onClick={() => setSelectedMovie(movie)} variant="contained" style={{ marginTop: "15px" }}><b>show details</b></Button>
+                </div>))}
             </div>
           )
           :
-          movies && movies.length > 0 ?
+          movies?.length > 0 ?
             (
               <div className={style.MoviesContainer}>
-                <MoviesList movies={movies} setSelectedMovie={setSelectedMovie}/>
+                <MoviesList movies={movies} setSelectedMovie={setSelectedMovie} />
               </div>
             )
-            // :
-            // movies && movies.length === 0 ?
-            // (
-            //   <>no movies
-            //   </>
-            // )
+            // {/* {movies?.length === 0 &&
+            //   (
+            //     <>no movies
+            //       </>
+            //   )} */}
             :
-            allShows ?
-              (
-                <div className={style.MoviesContainer}>
-                  {allShows.data.slice(bounds[0], bounds[1]).map((movie, index) => (
-                    <div key={index} className={style.movieCard} >
-                      <MovieItem movie={movie} />
-                      <Button onClick={() => { setSelectedMovie(movie) }} variant="contained" style={{ marginTop: "15px" }}><b>show details</b></Button>
-                    </div>))}
+            selectedMovie &&
+            (
+              <div className={style.movieDetailsContainer}>
+                <div className={style.movieCard}>
+                  <MovieItem movie={selectedMovie} />
+                  <Button onClick={() => setSelectedMovie(null)} variant="contained" style={{ marginTop: "15px" }}><b>back</b></Button>
                 </div>
-              )
-              :
-              (
-                // <div style={{height:"300px", width:"300px", border: "2px solid" }}>
-                //   <img src={loaderSrc}
-                //       alt="loader.gif"/>
-                // </div>
-                <>loaderSr{console.log("loader")}</>
-              )
-        }
+                <MovieDetails movie={selectedMovie} />
+              </div>
+            )}
+
       </div>
       {!selectedMovie &&
-        <div style={{ display: "flex", justifyContent: "center" }}>
+        <div style={flexStyle}>
           <Pagination
             activePage={activePage}
             // itemsCountPerPage={10}

@@ -1,16 +1,14 @@
-import React, { useState } from "react";
-import Header from "./Header";
-import Body from "./Body";
-import Footer from "./Footer";
+import React from "react";
+import Header from "./Components/Header";
+import Body from "./Components/Body";
+import Footer from "./Components/Footer";
 
 export default function App() {
-    const [moviesOfAppComponent, setMoviesOfAppComponent] = useState(null);
-
-    return (
-        <div>
-            <Header setMoviesOfAppComponent={setMoviesOfAppComponent} />
-            <Body movies={moviesOfAppComponent} />
-            <Footer />
-        </div>
-    )
+  return (
+    <div>
+      <Header />
+      <Body />
+      <Footer />
+    </div>
+  );
 }
