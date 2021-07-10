@@ -1,14 +1,22 @@
 # REACT JS - TVMAZE API - MATERIAL-UI
 
 This project was created with React
-You can search for tv series and get information through TVMAZE API
-Material UI was used to design the UI
+You can search for tv series and get information through [TVMAZE API](https://www.tvmaze.com/api)
 
-# Live : 
-### Click here : https://movies-app-searcher.herokuapp.com/
+## Exercise :
 
+Make a ReactJS application with Material UI that has the following features on two pages:
 
+- A common header
+- A common footer
+- The first page offers a search button
+- Following the search, the films that match are displayed (thumbnail image)
+- You can click on the films found to go to the second page
+- The second page shows the selected movie in detail
 
+### Api: [https://www.tvmaze.com/api](https://www.tvmaze.com/api)
+
+# Live : https://movies-app-searcher.herokuapp.com/
 
 # Getting Started with Create React App
 

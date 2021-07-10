@@ -15,7 +15,15 @@ const Footer = () => {
           marginBottom: "20px",
         }}
       >
-        Nobo Life
+        Open source by{" "}
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href="https://www.linkedin.com/in/mustapha-jaridi"
+        >
+          Mustapha Jaridi
+        </a>{" "}
+        © 2021
       </h1>
       <Container>
         <Row>
