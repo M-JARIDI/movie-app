@@ -15,13 +15,9 @@ export default function Details({ movie }) {
     },
     {
       label: "Type",
-      value: movie.type
-        ? movie.type
-        : movie.show.type
-        ? movie.show.type
-        : "",
+      value: movie.type ? movie.type : movie.show.type ? movie.show.type : "",
     },
-    
+
     {
       label: "Genre",
       value: movie.genres
@@ -65,7 +61,7 @@ export default function Details({ movie }) {
   ];
 
   return (
-    <div style={{ marginLeft: "20px", width: "40rem" }}>
+    <div style={{ marginLeft: "20px", minWidth: "310px" }}>
       <TableContainer
         component={Paper}
         style={{
