@@ -61,7 +61,7 @@ export default function Details({ movie }) {
   ];
 
   return (
-    <div style={{ marginLeft: "20px", minWidth: "310px" }}>
+    <div style={{ margin: "20px", width: "500px", maxWidth: "100%", }}>
       <TableContainer
         component={Paper}
         style={{
