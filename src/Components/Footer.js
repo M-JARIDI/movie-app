@@ -1,13 +1,13 @@
 import React from "react";
-import FacebookIcon from "@material-ui/icons/Facebook";
-import InstagramIcon from "@material-ui/icons/Instagram";
-import LinkedInIcon from "@material-ui/icons/LinkedIn";
-import { Box, Container, Row, Column, FooterLink } from "../Utils/FooterStyles";
+// import FacebookIcon from "@material-ui/icons/Facebook";
+// import InstagramIcon from "@material-ui/icons/Instagram";
+// import LinkedInIcon from "@material-ui/icons/LinkedIn";
+import { Box/*, Container, Row, Column, FooterLink*/ } from "../Utils/FooterStyles";
 
 const Footer = () => {
   return (
     <Box>
-      <h2
+      <h3
         style={{
           color: "yellow",
           textAlign: "center",
@@ -24,7 +24,7 @@ const Footer = () => {
           Mustapha Jaridi
         </a>{" "}
         © 2021
-      </h2>
+      </h3>
     </Box>
   );
 };
