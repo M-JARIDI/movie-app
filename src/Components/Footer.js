@@ -7,7 +7,7 @@ import { Box, Container, Row, Column, FooterLink } from "../Utils/FooterStyles";
 const Footer = () => {
   return (
     <Box>
-      <h1
+      <h2
         style={{
           color: "yellow",
           textAlign: "center",
@@ -24,44 +24,7 @@ const Footer = () => {
           Mustapha Jaridi
         </a>{" "}
         © 2021
-      </h1>
-      <Container>
-        <Row>
-          <Column>
-            <FooterLink href="#">FAQ</FooterLink>
-            <FooterLink href="#">Modes de lecture</FooterLink>
-            <FooterLink href="#">Mentions légales</FooterLink>
-            <FooterLink href="#">Programmes</FooterLink>
-          </Column>
-          <Column>
-            <FooterLink href="#">Centre d'aide</FooterLink>
-            <FooterLink href="#">Recrutement</FooterLink>
-            <FooterLink href="#">Conditions</FooterLink>
-            <FooterLink href="#">Nous contacter</FooterLink>
-          </Column>
-          <Column>
-            <FooterLink href="#">Compte</FooterLink>
-            <FooterLink href="#">Cartes cadeaux</FooterLink>
-            <FooterLink href="#">Confidentialité</FooterLink>
-            <FooterLink href="#">Test de vitesse</FooterLink>
-          </Column>
-          <Column>
-            <FooterLink href="#">Social Media</FooterLink>
-            <FooterLink href="#">
-              <FacebookIcon />
-              <span style={{ marginLeft: "10px" }}>Facebook</span>
-            </FooterLink>
-            <FooterLink href="#">
-              <InstagramIcon />
-              <span style={{ marginLeft: "10px" }}>Instagram</span>
-            </FooterLink>
-            <FooterLink href="#">
-              <LinkedInIcon />
-              <span style={{ marginLeft: "10px" }}>LinkedIn</span>
-            </FooterLink>
-          </Column>
-        </Row>
-      </Container>
+      </h2>
     </Box>
   );
 };
